@@ -2,22 +2,25 @@ import Ember from 'ember';
 import CartItem from './cart-item';
 
 var Cart = Ember.Object.extend({
+	subTotal: function() {
+		return this.get('items').reduce((value, item) => value + item.get('total'), 0);
+	}.property(),
+
+	discountAmount: function() {
+		return this.get('subTotal') * this.get('discount');
+	}.property(),
+
+	subTotalAfterDiscount: function() {
+		return this.get('subTotal') - this.get('discountAmount');
+	}.property(),
+
 	total: function() {
-		var items = this.get('items') || [];
-
-		var subTotal = items.reduce(function(previousValue, item) {
-			var itemTotal = item.quantity * item.price + item.shipping;
-			return previousValue + itemTotal;
-		}, 0);
-
-		var taxRate = this.get('taxRate');
-		var total = subTotal * (1 + taxRate);
-
-		var discount = this.get('discount');
-		return total - (total * discount);
-
-	}.property()
+		return this.get('subTotalAfterDiscount') * (1 + this.get('taxRate'));
+	}.property(),
 });
+
+
+
 
 export default Cart;
 
