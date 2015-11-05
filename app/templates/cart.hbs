@@ -1,0 +1,27 @@
+{{outlet}}
+
+<table>
+	<tbody>
+		<td>Name</td>
+		<td>Price</td>
+		<td>Quantity</td>
+		<td>Tax Rate</td>
+		<td>Shipping</td>
+		<td>Total</td>
+	</tbody>
+
+	{{#each item in model.items }}
+		<tr>
+			<td>{{item.name}}</td>
+			<td>{{item.price}}</td>
+			<td>{{item.quantity}}</td>
+			<td>{{item.taxRate}}</td>
+			<td>{{item.shipping}}</td>
+			<td>???</td>
+		</tr>
+	{{/each}}
+
+</table>
+
+<br>
+Total: {{ total }}
