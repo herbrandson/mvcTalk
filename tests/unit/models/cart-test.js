@@ -15,5 +15,5 @@ test('it can calculate the total', function(assert) {
 	var model = getCart();
 	var total = model.get('total');
 
-	assert.equal(total, 1029171.30792);
+	assert.equal(total, 990146.52);
 });
