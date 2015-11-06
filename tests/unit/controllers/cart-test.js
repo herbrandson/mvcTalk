@@ -18,5 +18,5 @@ test('it can calculate the total', function(assert) {
 	controller.set('model', data);
 	var total = controller.get('total');
 
-	assert.equal(total, 1029171.30792);
+	assert.equal(total, 990146.52);
 });
